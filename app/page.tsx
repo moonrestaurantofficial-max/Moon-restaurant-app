@@ -41,21 +41,7 @@ export default function Home() {
             >
               We have Only Two Branches Naran And Besar
             </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
-            >
-              <Link
-                href="/booking"
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-[rgb(var(--primary))] text-white rounded-full font-semibold text-base sm:text-lg shadow-2xl hover:shadow-[rgb(var(--primary))/50] hover:bg-[rgb(var(--secondary))] transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2"
-              >
-                <Icon name="calendar" size={20} />
-                <span>Make Booking</span>
-              </Link>
-            </motion.div>
+
           </motion.div>
         </div>
 
@@ -94,7 +80,7 @@ export default function Home() {
               <div className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="relative h-64 sm:h-80 overflow-hidden">
                   <Image
-                    src="/assets/images/besar.jpeg"
+                    src="/assets/images/naran-branch.jpeg"
                     alt="Naran Branch"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -478,31 +464,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[rgb(var(--muted))] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-[rgb(var(--primary))] rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-[rgb(var(--secondary))] rounded-full blur-3xl" />
-        </div>
-        
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-[rgb(var(--primary))]">
-              Ready for an Unforgettable Experience?
-            </h2>
-            <p className="text-base sm:text-lg mb-8 sm:mb-10 text-[rgb(var(--muted-foreground))] max-w-2xl mx-auto">
-              Book your table today and enjoy exceptional dining
-            </p>
-            <Link
-              href="/booking"
-              className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-[rgb(var(--primary))] text-white rounded-full font-semibold text-base sm:text-lg shadow-lg hover:bg-[rgb(var(--secondary))] transition-all duration-300 hover:scale-105"
-            >
-              <Icon name="calendar" size={24} />
-              <span>Reserve Your Table</span>
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
+
     </div>
   );
 }

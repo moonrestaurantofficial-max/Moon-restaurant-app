@@ -11,7 +11,7 @@ export default function Footer() {
     'Quick Links': [
       { label: 'Home', href: '/' },
       { label: 'Locations', href: '/locations' },
-      { label: 'Booking', href: '/booking' },
+      // { label: 'Booking', href: '/booking' },
       { label: 'Reviews', href: '/reviews' },
     ],
     'Contact': [
@@ -19,7 +19,7 @@ export default function Footer() {
       { label: 'Besar Branch', href: '/locations#besar' },
       { label: 'Phone: +92 311 2932080', href: 'tel:+923112932080' },
       { label: 'Phone: +92 331 2241322', href: 'tel:+923312241322' },
-      { label: 'Email: info@moonrestaurant.com', href: 'mailto:info@moonrestaurant.com' },
+      { label: 'Email: info@moonrestaurant.group', href: 'mailto:info@moonrestaurant.group' },
     ],
   };
 

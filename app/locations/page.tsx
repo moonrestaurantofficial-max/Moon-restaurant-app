@@ -15,7 +15,7 @@ const locations = [
     phone: '+92 311 2932080',
     email: 'naran@moonrestaurant.com',
     hours: 'Daily: 11:00 AM - 11:00 PM',
-    image: 'assets/images/naran.jpeg',
+    image: '/assets/images/naran-branch.jpeg',
     description: 'Nestled in the heart of Naran, our flagship restaurant offers breathtaking mountain views and authentic Pakistani cuisine. Perfect for tourists exploring the Kaghan Valley.',
     features: ['Mountain View', 'Tourist Friendly', 'Family Dining', 'Parking Available'],
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.5!2d73.65!3d34.90!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU0JzAwLjAiTiA3M8KwMzknMDAuMCJF!5e0!3m2!1sen!2s!4v1234567890'
@@ -28,7 +28,7 @@ const locations = [
     phone: '+92 331 2241322',
     email: 'besar@moonrestaurant.com',
     hours: 'Daily: 11:00 AM - 11:00 PM',
-    image: 'assets/images/besar.jpeg',
+    image: '/assets/images/besar.jpeg',
     description: 'Our modern Besar location combines elegant ambiance with traditional flavors. Ideal for special occasions, business dinners, and group celebrations.',
     features: ['Event Space', 'VIP Rooms', 'Business Friendly', 'Valet Parking'],
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.5!2d73.65!3d34.90!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU0JzAwLjAiTiA3M8KwMzknMDAuMCJF!5e0!3m2!1sen!2s!4v1234567890'
@@ -153,21 +153,21 @@ export default function LocationsPage() {
 
                   {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                    <Link
-                      href="/booking"
-                      className="px-6 py-3 bg-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
-                    >
-                      <Icon name="calendar" size={20} />
-                      <span>Book a Table</span>
-                    </Link>
                     <a
                       href={`https://www.google.com/maps/search/${encodeURIComponent(location.address)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 bg-white border-2 border-[rgb(var(--primary))] text-[rgb(var(--primary))] rounded-full font-semibold hover:bg-[rgb(var(--primary))] hover:text-white transition-all duration-300 flex items-center gap-2"
+                      className="px-6 py-3 bg-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
                     >
                       <Icon name="location" size={20} />
                       <span>Get Directions</span>
+                    </a>
+                    <a
+                      href={`tel:${location.phone}`}
+                      className="px-6 py-3 bg-white border-2 border-[rgb(var(--primary))] text-[rgb(var(--primary))] rounded-full font-semibold hover:bg-[rgb(var(--primary))] hover:text-white transition-all duration-300 flex items-center gap-2"
+                    >
+                      <Icon name="phone" size={20} />
+                      <span>Call Branch</span>
                     </a>
                   </div>
                 </div>
@@ -195,7 +195,8 @@ export default function LocationsPage() {
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">\n          <ScrollReveal>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               Can&apos;t Decide Which Location?
             </h2>
@@ -203,19 +204,19 @@ export default function LocationsPage() {
               Both branches offer the same premium quality and exceptional service
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/booking"
-                className="px-8 py-4 bg-white text-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] hover:text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
-              >
-                <Icon name="calendar" size={24} />
-                <span>Make a Reservation</span>
-              </Link>
               <a
                 href="tel:+923112932080"
+                className="px-8 py-4 bg-white text-[rgb(var(--primary))] hover:bg-[rgb(var(--secondary))] hover:text-white rounded-full font-bold text-lg shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+              >
+                <Icon name="phone" size={24} />
+                <span>Call Naran Branch</span>
+              </a>
+              <a
+                href="tel:+923312241322"
                 className="px-8 py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold text-lg border-2 border-white/50 hover:bg-white hover:text-[rgb(var(--primary))] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <Icon name="phone" size={24} />
-                <span>Call Us Now</span>
+                <span>Call Besar Branch</span>
               </a>
             </div>
           </ScrollReveal>
