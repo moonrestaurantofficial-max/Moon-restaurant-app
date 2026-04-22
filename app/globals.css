@@ -293,13 +293,7 @@ html {
   border-radius: 4px;
 }
 
-/* Responsive Typography */
-@media (max-width: 640px) {
-  html {
-    font-size: 14px;
-  }
-}
-
+/* Responsive Typography — base font stays at 16px everywhere */
 @media (min-width: 641px) and (max-width: 1024px) {
   html {
     font-size: 15px;

@@ -10,37 +10,75 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop"
             alt="Restaurant Interior"
             fill
-            className="object-cover"
+            className="object-cover scale-105"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+          {/* Multi-layer gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
         </div>
+
+        {/* Decorative ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[rgb(var(--secondary))]/10 rounded-full blur-3xl pointer-events-none z-0" />
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto w-full">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl leading-tight">
-              Moon Restaurant
+            {/* Premium Gold Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.7 }}
+              className="inline-flex items-center gap-2 mb-5 sm:mb-7 px-5 py-2 rounded-full border border-[rgb(var(--secondary))]/60 bg-[rgb(var(--secondary))]/15 backdrop-blur-sm"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
+              <span className="text-[rgb(var(--secondary))] text-xs sm:text-sm font-semibold uppercase tracking-[0.2em]">Naran &amp; Besar</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
+            </motion.div>
+
+            {/* Main Heading — BIG on mobile */}
+            <h1
+              style={{ textShadow: '0 4px 30px rgba(0,0,0,0.6), 0 0 80px rgba(217,119,6,0.15)' }}
+              className="text-6xl xs:text-7xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-bold text-white mb-4 sm:mb-5 drop-shadow-2xl leading-[1.05] tracking-tight"
+            >
+              Moon
+              <span className="block text-[rgb(var(--secondary))] drop-shadow-[0_0_30px_rgba(217,119,6,0.5)]">Restaurant</span>
             </h1>
+
+            {/* Decorative Gold Divider */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
+              className="flex items-center justify-center gap-3 mb-5 sm:mb-7"
+            >
+              <div className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-[rgb(var(--secondary))]/80" />
+              <div className="w-2 h-2 rounded-full bg-[rgb(var(--secondary))]" />
+              <div className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-[rgb(var(--secondary))]/80" />
+            </motion.div>
+
+            {/* Subtitle — big & clear on mobile */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 mb-8 sm:mb-10 lg:mb-12 font-light tracking-wide px-4"
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 mb-8 sm:mb-10 lg:mb-12 font-light tracking-wide px-2"
+              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}
             >
-              We have Only Two Branches Naran And Besar
+              Authentic Pakistani Cuisine
             </motion.p>
+
 
           </motion.div>
         </div>
@@ -49,15 +87,16 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10"
+          transition={{ delay: 1.2, duration: 1 }}
+          className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         >
+          <span className="text-white/50 text-xs uppercase tracking-[0.2em] font-medium">Scroll</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-            className="text-white"
+            className="text-white/70"
           >
-            <Icon name="down-arrow" size={40} />
+            <Icon name="down-arrow" size={32} />
           </motion.div>
         </motion.div>
       </section>
