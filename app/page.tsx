@@ -36,16 +36,7 @@ export default function Home() {
             transition={{ duration: 0.9, ease: 'easeOut' }}
           >
             {/* Premium Gold Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.7 }}
-              className="inline-flex items-center gap-2 mb-5 sm:mb-7 px-5 py-2 rounded-full border border-[rgb(var(--secondary))]/60 bg-[rgb(var(--secondary))]/15 backdrop-blur-sm"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
-              <span className="text-[rgb(var(--secondary))] text-xs sm:text-sm font-semibold uppercase tracking-[0.2em]">Naran &amp; Besar</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
-            </motion.div>
+
 
             {/* Main Heading — BIG on mobile */}
             <h1
@@ -56,6 +47,16 @@ export default function Home() {
               <span className="block text-[rgb(var(--secondary))] drop-shadow-[0_0_30px_rgba(217,119,6,0.5)]">Restaurant</span>
             </h1>
 
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.7 }}
+              className="inline-flex items-center gap-2 mb-5 sm:mb-7 px-5 py-2 rounded-full border border-[rgb(var(--secondary))]/60 bg-[rgb(var(--secondary))]/15 backdrop-blur-sm"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
+              <span className="text-[rgb(var(--secondary))] text-xs sm:text-sm font-semibold uppercase tracking-[0.2em]">Naran &amp; Besar</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
+            </motion.div>
             {/* Decorative Gold Divider */}
             <motion.div
               initial={{ scaleX: 0 }}

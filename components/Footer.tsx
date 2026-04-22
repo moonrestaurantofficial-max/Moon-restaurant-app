@@ -10,7 +10,7 @@ export default function Footer() {
   const footerLinks = {
     'Quick Links': [
       { label: 'Home', href: '/' },
-      { label: 'Locations', href: '/locations' },
+      // { label: 'Locations', href: '/locations' },
       // { label: 'Booking', href: '/booking' },
       { label: 'Reviews', href: '/reviews' },
     ],
@@ -40,7 +40,7 @@ export default function Footer() {
               Where Taste Meets the Moonlight. Experience authentic Pakistani cuisine in a premium dining atmosphere.
             </p>
             <div className="flex gap-3 sm:gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <a href="https://www.facebook.com/share/14bTYQcELSu/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 hover:scale-110">
                 <Icon name="facebook" size={20} className="text-white" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 hover:scale-110">
