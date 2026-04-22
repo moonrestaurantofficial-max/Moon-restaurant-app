@@ -100,7 +100,7 @@ export default function Navbar() {
               {/* Divider */}
               <div className="w-px h-8 bg-gray-200 mx-1" />
               <a
-                href="tel:+923112932080"
+                href="tel:+923312241322"
                 className="flex items-center gap-2 px-5 py-2.5 border-2 border-[rgb(var(--primary))] text-[rgb(var(--primary))] rounded-full font-semibold text-sm lg:text-base hover:bg-[rgb(var(--primary))] hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 flex-shrink-0">
@@ -179,7 +179,7 @@ export default function Navbar() {
                   className="pt-2 border-t border-gray-100 mt-2"
                 >
                   <a
-                    href="tel:+923112932080"
+                    href="tel:+923312241322"
                     className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-[rgb(var(--primary))] text-white rounded-xl font-semibold text-base hover:bg-[rgb(var(--secondary))] transition-all duration-300"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
