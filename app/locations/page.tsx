@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
 import Icon from '@/components/Icon';
@@ -40,11 +39,6 @@ export default function LocationsPage() {
     <div className="pt-20">
       {/* Hero Section */}
       <section className="relative py-12 sm:py-16 lg:py-20 bg-[rgb(var(--primary))] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 left-10 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-white rounded-full blur-3xl" />
-        </div>
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-center">
@@ -62,7 +56,7 @@ export default function LocationsPage() {
         <section
           key={location.id}
           id={location.id}
-          className={`py-12 sm:py-16 lg:py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-[rgb(var(--muted))]'}`}
+          className={`py-12 backdrop-blur-[1px] sm:py-16 lg:py-20 ${index % 2 === 0 ? 'bg-white/90' : 'bg-[rgb(var(--muted))]/90'}`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
@@ -75,7 +69,7 @@ export default function LocationsPage() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-black/35" />
                   <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
                     <div className="flex items-center gap-2 mb-2">
                       <Icon name="location" size={24} className="text-white" />
