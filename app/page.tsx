@@ -5,6 +5,45 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
 import Icon from '@/components/Icon';
+import ScrollStack, { ScrollStackItem } from '@/components/ScrollStack';
+
+const features = [
+  {
+    icon: 'party',
+    title: 'Perfect Gathering Place',
+    desc: 'Bringing families and friends together',
+    longDesc: 'Moon Restaurant is the perfect destination for gatherings of all kinds. Whether it\'s a family reunion, friends catching up, or special celebrations, our welcoming atmosphere and spacious seating create the ideal setting for creating cherished memories together.',
+    image: '/assets/images/1.jpeg'
+  },
+  {
+    icon: 'restaurant',
+    title: 'International Experience',
+    desc: 'Welcoming guests from around the world',
+    longDesc: 'We take pride in serving international visitors who seek authentic Pakistani cuisine. Foreigners and tourists consistently choose Moon Restaurant for our exceptional hospitality, delicious meals, and the unique cultural dining experience that makes their journey through Pakistan truly memorable.',
+    image: '/assets/images/2.jpeg'
+  },
+  {
+    icon: 'star',
+    title: 'Best Cuisine in Naran',
+    desc: 'Authentic flavors in the heart of the mountains',
+    longDesc: 'Experience the finest Pakistani cuisine in the heart of Naran. Our expertly crafted dishes showcase traditional recipes passed down through generations, prepared with the freshest ingredients and authentic spices that capture the true essence of Pakistani gastronomy.',
+    image: '/assets/images/3.jpeg'
+  },
+  {
+    icon: 'landscape',
+    title: 'Breathtaking Mountain Views',
+    desc: 'Dine surrounded by scenic natural beauty',
+    longDesc: 'Enjoy your meal with stunning panoramic views of majestic mountains and pristine landscapes. Our strategic location offers an unparalleled dining experience where spectacular scenery complements exceptional cuisine, making every visit a feast for both the palate and the eyes.',
+    image: '/assets/images/4.jpeg'
+  },
+  {
+    icon: 'award',
+    title: 'Luxury & Comfort',
+    desc: 'Premium amenities with convenient parking',
+    longDesc: 'Experience luxury at its finest with our premium facilities designed for your ultimate comfort. From elegant interiors and plush seating to ample secure parking space, every detail ensures a hassle-free and sophisticated dining experience that reflects our commitment to excellence.',
+    image: '/assets/images/5.jpeg'
+  },
+];
 
 export default function Home() {
   return (
@@ -20,13 +59,8 @@ export default function Home() {
             className="object-cover scale-105"
             priority
           />
-          {/* Multi-layer gradient for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-black/62" />
         </div>
-
-        {/* Decorative ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[rgb(var(--secondary))]/10 rounded-full blur-3xl pointer-events-none z-0" />
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto w-full">
@@ -64,9 +98,9 @@ export default function Home() {
               transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
               className="flex items-center justify-center gap-3 mb-5 sm:mb-7"
             >
-              <div className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-[rgb(var(--secondary))]/80" />
+              <div className="h-px w-12 bg-[rgb(var(--secondary))]/70 sm:w-20" />
               <div className="w-2 h-2 rounded-full bg-[rgb(var(--secondary))]" />
-              <div className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-[rgb(var(--secondary))]/80" />
+              <div className="h-px w-12 bg-[rgb(var(--secondary))]/70 sm:w-20" />
             </motion.div>
 
             {/* Subtitle — big & clear on mobile */}
@@ -103,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* Branches Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="bg-white/90 py-12 backdrop-blur-[1px] sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-[rgb(var(--primary))] mb-3 sm:mb-4">
@@ -125,7 +159,7 @@ export default function Home() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-0 bg-black/45" />
                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
                     <div className="flex items-center gap-2 mb-2">
                       <Icon name="location" size={20} />
@@ -157,7 +191,7 @@ export default function Home() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-0 bg-black/45" />
                   <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
                     <div className="flex items-center gap-2 mb-2">
                       <Icon name="location" size={20} />
@@ -182,11 +216,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section - Alternating Layout */}
-      <section className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white to-[rgb(var(--muted))]">
+      {/* Features Section - React Bits Scroll Stack */}
+      <section className="bg-white/85 py-16 backdrop-blur-[1px] sm:py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-16 sm:mb-20 lg:mb-24">
+            <div className="mb-10 text-center sm:mb-12 lg:mb-14">
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -201,187 +235,59 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-12 sm:space-y-16 lg:space-y-20">
-            {[
-              { 
-                icon: 'party', 
-                title: 'Perfect Gathering Place', 
-                desc: 'Bringing families and friends together',
-                longDesc: 'Moon Restaurant is the perfect destination for gatherings of all kinds. Whether it\'s a family reunion, friends catching up, or special celebrations, our welcoming atmosphere and spacious seating create the ideal setting for creating cherished memories together.',
-                image: '/assets/images/1.jpeg'
-              },
-              { 
-                icon: 'restaurant', 
-                title: 'International Experience', 
-                desc: 'Welcoming guests from around the world',
-                longDesc: 'We take pride in serving international visitors who seek authentic Pakistani cuisine. Foreigners and tourists consistently choose Moon Restaurant for our exceptional hospitality, delicious meals, and the unique cultural dining experience that makes their journey through Pakistan truly memorable.',
-                image: '/assets/images/2.jpeg'
-              },
-
-              { 
-                icon: 'star', 
-                title: 'Best Cuisine in Naran', 
-                desc: 'Authentic flavors in the heart of the mountains',
-                longDesc: 'Experience the finest Pakistani cuisine in the heart of Naran. Our expertly crafted dishes showcase traditional recipes passed down through generations, prepared with the freshest ingredients and authentic spices that capture the true essence of Pakistani gastronomy.',
-                image: '/assets/images/3.jpeg'
-              },
-              { 
-                icon: 'landscape', 
-                title: 'Breathtaking Mountain Views', 
-                desc: 'Dine surrounded by scenic natural beauty',
-                longDesc: 'Enjoy your meal with stunning panoramic views of majestic mountains and pristine landscapes. Our strategic location offers an unparalleled dining experience where spectacular scenery complements exceptional cuisine, making every visit a feast for both the palate and the eyes.',
-                image: '/assets/images/4.jpeg'
-              },
-              { 
-                icon: 'award', 
-                title: 'Luxury & Comfort', 
-                desc: 'Premium amenities with convenient parking',
-                longDesc: 'Experience luxury at its finest with our premium facilities designed for your ultimate comfort. From elegant interiors and plush seating to ample secure parking space, every detail ensures a hassle-free and sophisticated dining experience that reflects our commitment to excellence.',
-                image: '/assets/images/5.jpeg'
-              },
-            ].map((feature, index) => {
-              const isEven = index % 2 === 0;
-              return (
-                <div key={index} className="relative">
-                  <motion.div
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 sm:gap-12 lg:gap-16`}
-                  >
-                    {/* Image Section */}
-                    <motion.div 
-                      initial={{ opacity: 0, x: isEven ? -80 : 80, scale: 0.9 }}
-                      whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                      className="w-full lg:w-1/2"
-                    >
-                      <div className="relative group">
-                        {/* Decorative elements */}
-                        <motion.div 
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.6, delay: 0.4 }}
-                          className={`absolute -z-10 w-full h-full bg-[rgb(var(--primary))]/20 rounded-2xl ${isEven ? '-right-4 -bottom-4 sm:-right-6 sm:-bottom-6' : '-left-4 -bottom-4 sm:-left-6 sm:-bottom-6'}`}
-                        />
-                        <motion.div 
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.6, delay: 0.5 }}
-                          className={`absolute -z-20 w-3/4 h-3/4 bg-[rgb(var(--secondary))]/10 rounded-2xl ${isEven ? '-right-8 -bottom-8 sm:-right-12 sm:-bottom-12' : '-left-8 -bottom-8 sm:-left-12 sm:-bottom-12'}`}
-                        />
-                        
-                        <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl">
-                          <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
-                          >
-                            <Image
-                              src={feature.image}
-                              alt={feature.title}
-                              width={600}
-                              height={450}
-                              className="w-full h-[280px] sm:h-[350px] lg:h-[400px] object-cover"
-                            />
-                          </motion.div>
-                          {/* Gradient overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                          
-                          {/* Floating icon badge */}
-                          <motion.div 
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.6, type: "spring", stiffness: 200 }}
-                            className={`absolute ${isEven ? '-right-4 sm:-right-6' : '-left-4 sm:-left-6'} -bottom-4 sm:-bottom-6 bg-[rgb(var(--primary))] p-4 sm:p-5 rounded-xl shadow-xl`}
-                          >
-                            <Icon name={feature.icon} size={32} className="text-white" />
-                          </motion.div>
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* Text Section */}
-                    <motion.div 
-                      initial={{ opacity: 0, x: isEven ? 80 : -80 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                      className={`w-full lg:w-1/2 ${isEven ? 'lg:pl-4' : 'lg:pr-4'}`}
-                    >
-                      <div className="space-y-4 sm:space-y-6">
-                        <motion.h3 
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: 0.5 }}
-                          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[rgb(var(--primary))]"
-                        >
-                          {feature.title}
-                        </motion.h3>
-                        
-                        <motion.p 
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: 0.6 }}
-                          className="text-lg sm:text-xl text-[rgb(var(--secondary))] font-medium"
-                        >
-                          {feature.desc}
-                        </motion.p>
-                        
-                        <motion.p 
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: 0.7 }}
-                          className="text-base sm:text-lg text-[rgb(var(--muted-foreground))] leading-relaxed"
-                        >
-                          {feature.longDesc}
-                        </motion.p>
-                        
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: 0.8 }}
-                        >
-                          <motion.button
-                            whileHover={{ scale: 1.05, x: 5 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="flex items-center gap-2 text-[rgb(var(--primary))] font-semibold group"
-                          >
-                            <span>Learn More</span>
-                            <motion.span
-                              animate={{ x: [0, 5, 0] }}
-                              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                              <Icon name="arrow" size={20} className="group-hover:translate-x-1 transition-transform" />
-                            </motion.span>
-                          </motion.button>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Decorative line between sections */}
-                  {index < 5 && (
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="hidden lg:block w-1/2 h-px bg-gradient-to-r from-transparent via-[rgb(var(--border))] to-transparent mx-auto mt-12 sm:mt-16 lg:mt-20"
+          <ScrollStack
+            useWindowScroll
+            itemDistance={120}
+            itemStackDistance={24}
+            itemScale={0.025}
+            baseScale={0.88}
+            stackPosition="14%"
+            scaleEndPosition="7%"
+            rotationAmount={0}
+            blurAmount={0.4}
+            className="h-auto overflow-visible"
+          >
+            {features.map((feature, index) => (
+              <ScrollStackItem
+                key={feature.title}
+                itemClassName="h-auto min-h-[620px] overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-white p-0 shadow-2xl shadow-black/10 md:min-h-[430px]"
+              >
+                <div className="grid h-full min-h-[620px] md:min-h-[430px] md:grid-cols-[0.95fr_1.05fr]">
+                  <div className="relative min-h-[260px] overflow-hidden md:min-h-full">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      fill
+                      sizes="(min-width: 768px) 42vw, 100vw"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
                     />
-                  )}
+                    <div className="absolute inset-0 bg-black/18" />
+                    <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgb(var(--primary))] text-white shadow-xl sm:left-6 sm:top-6">
+                      <Icon name={feature.icon} size={30} />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12">
+                    <div className="mb-5 flex items-center gap-3">
+                      <span className="text-sm font-bold tracking-[0.2em] text-[rgb(var(--secondary))]">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="h-px flex-1 bg-[rgb(var(--border))]" />
+                    </div>
+                    <h3 className="text-2xl font-bold leading-tight text-[rgb(var(--primary))] sm:text-3xl lg:text-4xl">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-3 text-lg font-semibold text-[rgb(var(--secondary))] sm:text-xl">
+                      {feature.desc}
+                    </p>
+                    <p className="mt-5 text-sm leading-7 text-[rgb(var(--muted-foreground))] sm:text-base lg:text-lg">
+                      {feature.longDesc}
+                    </p>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
+              </ScrollStackItem>
+            ))}
+          </ScrollStack>
         </div>
       </section>
 
@@ -411,13 +317,13 @@ export default function Home() {
               { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },
               { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
               { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
-              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The service was seamless and they accommodated all our requests.' },
               { name: 'Ahmad Hassan', avatar: 'AH', rating: 5, comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering.' },
               { name: 'Fatima Khan', avatar: 'FK', rating: 5, comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location.' },
               { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },
               { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
               { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
-              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The service was seamless and they accommodated all our requests.' },
             ].map((review, index) => (
               <motion.div
                 key={`row1-${index}`}
@@ -453,13 +359,13 @@ export default function Home() {
             className="flex gap-4 sm:gap-6"
           >
             {[
-              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The service was seamless and they accommodated all our requests.' },
               { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
               { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
               { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },
               { name: 'Fatima Khan', avatar: 'FK', rating: 5, comment: 'Best Pakistani restaurant in the area. Fresh ingredients, excellent service, and beautiful location.' },
               { name: 'Ahmad Hassan', avatar: 'AH', rating: 5, comment: 'Absolutely amazing experience! The food was authentic and delicious. The ambiance was perfect for our family gathering.' },
-              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The group booking was seamless and they accommodated all our requests.' },
+              { name: 'Ayesha Tariq', avatar: 'AT', rating: 5, comment: 'Wonderful experience with family. The service was seamless and they accommodated all our requests.' },
               { name: 'Usman Malik', avatar: 'UM', rating: 5, comment: 'Outstanding! From appetizers to desserts, everything was perfect. Authentic flavors!' },
               { name: 'Sara Ahmed', avatar: 'SA', rating: 4, comment: 'Great food and atmosphere. We celebrated our anniversary here and it was memorable.' },
               { name: 'Ali Raza', avatar: 'AR', rating: 5, comment: 'Perfect place for tourists! The staff was very welcoming and the food exceeded our expectations.' },

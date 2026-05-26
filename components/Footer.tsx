@@ -11,7 +11,6 @@ export default function Footer() {
     'Quick Links': [
       { label: 'Home', href: '/' },
       // { label: 'Locations', href: '/locations' },
-      // { label: 'Booking', href: '/booking' },
       { label: 'Reviews', href: '/reviews' },
     ],
     'Contact': [
