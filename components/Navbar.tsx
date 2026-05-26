@@ -30,7 +30,7 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-3 left-0 right-0 z-50 px-3 transition-all duration-500 sm:top-4 ${
+        className={`fixed top-2 left-0 right-0 z-50 px-3 transition-all duration-500 sm:top-4 ${
           isScrolled
             ? 'translate-y-0'
             : 'translate-y-0'
@@ -139,9 +139,9 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="overflow-hidden md:hidden"
-            >
-              <div className="flex flex-col gap-1 border-t border-[rgb(var(--border))] px-1 py-4">
+          className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-3xl border border-[rgb(var(--border))] bg-white shadow-2xl shadow-black/15 md:hidden"
+        >
+          <div className="flex flex-col gap-1 px-2 py-3">
                 {navLinks.map((link, i) => {
                   const isActive = pathname === link.href;
                   return (
