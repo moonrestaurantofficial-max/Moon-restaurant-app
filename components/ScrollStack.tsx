@@ -11,7 +11,7 @@ export interface ScrollStackItemProps {
 
 export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({ children, itemClassName = '' }) => (
   <div
-    className={`scroll-stack-card relative w-full h-80 my-8 p-12 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform ${itemClassName}`.trim()}
+    className={`scroll-stack-card relative my-3 h-80 w-full origin-top rounded-[40px] p-0 shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border will-change-transform lg:my-8 ${itemClassName}`.trim()}
     style={{
       backfaceVisibility: 'hidden',
       transformStyle: 'preserve-3d'
@@ -287,9 +287,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     cardsRef.current = cards;
     const transformsCache = lastTransformsRef.current;
 
-    cards.forEach((card, i) => {
+    const applyCardSpacing = () => cards.forEach((card, i) => {
       if (i < cards.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
+        card.style.marginBottom = `${window.innerWidth < 1024 ? 20 : itemDistance}px`;
       }
       card.style.willChange = 'transform, filter';
       card.style.transformOrigin = 'top center';
@@ -300,15 +300,21 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       card.style.webkitPerspective = '1000px';
     });
 
+    applyCardSpacing();
     refreshOffsets();
     setupLenis();
 
     updateCardTransforms();
 
-    window.addEventListener('resize', refreshOffsets);
+    const handleResize = () => {
+      applyCardSpacing();
+      refreshOffsets();
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', refreshOffsets);
+      window.removeEventListener('resize', handleResize);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -353,7 +359,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         willChange: 'scroll-position'
       }}
     >
-      <div className="scroll-stack-inner min-h-screen px-0 pb-[30rem] pt-2 sm:px-3 sm:pb-[32rem] sm:pt-[8vh] lg:px-5 lg:pb-[38rem] lg:pt-[12vh]">
+      <div className="scroll-stack-inner px-0 pb-16 pt-0 sm:px-0 sm:pb-24 lg:min-h-0 lg:px-5 lg:pb-28 lg:pt-[6vh]">
         {children}
         {/* Spacer so the last pin can release cleanly */}
         <div className="scroll-stack-end w-full h-px" />

@@ -23,7 +23,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[rgb(var(--primary))] text-white">
+    <footer className="relative overflow-hidden bg-[#07351d] text-white">
+      <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[rgb(var(--secondary))]/10 blur-3xl" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Brand Section */}

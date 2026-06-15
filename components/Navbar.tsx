@@ -9,7 +9,6 @@ import Icon from '@/components/Icon';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Locations', href: '/locations' },
   { label: 'Reviews', href: '/reviews' },
 ];
 
@@ -37,10 +36,10 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`mx-auto max-w-7xl rounded-[28px] border px-3 shadow-2xl shadow-black/10 backdrop-blur-xl transition-all duration-500 sm:px-5 ${
+          className={`mx-auto max-w-7xl rounded-[24px] border px-3 shadow-2xl shadow-black/10 backdrop-blur-xl transition-all duration-500 sm:px-5 ${
             isScrolled
-              ? 'border-[rgb(var(--border))] bg-white/96'
-              : 'border-white/70 bg-white/90'
+              ? 'border-white/80 bg-white/95'
+              : 'border-white/20 bg-[rgb(var(--primary))]/80'
           }`}
         >
           <div className="flex h-16 items-center justify-between gap-3 sm:h-20">
@@ -56,17 +55,17 @@ export default function Navbar() {
                 />
               </div>
               <div className="flex min-w-0 flex-col">
-                <span className="truncate text-base font-bold leading-tight text-[rgb(var(--primary))] sm:text-2xl">
+                <span className={`truncate text-base font-bold leading-tight transition-colors sm:text-2xl ${isScrolled ? 'text-[rgb(var(--primary))]' : 'text-white'}`}>
                   Moon Restaurant
                 </span>
-                <span className="hidden text-[0.58rem] font-medium uppercase tracking-[0.2em] text-[rgb(var(--muted-foreground))] sm:block sm:text-xs">
+                <span className={`hidden text-[0.58rem] font-medium uppercase tracking-[0.2em] transition-colors sm:block sm:text-xs ${isScrolled ? 'text-[rgb(var(--muted-foreground))]' : 'text-white/65'}`}>
                   Taste Meets Moonlight
                 </span>
               </div>
             </Link>
 
             {/* React Bits-style animated desktop nav */}
-            <div className="hidden items-center rounded-full border border-[rgb(var(--border))] bg-white/70 p-1 md:flex">
+            <div className={`hidden items-center rounded-full border p-1 md:flex ${isScrolled ? 'border-[rgb(var(--border))] bg-white/70' : 'border-white/15 bg-white/10'}`}>
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -75,14 +74,14 @@ export default function Navbar() {
                     href={link.href}
                     className={`group relative overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-300 lg:px-6 ${
                       isActive
-                        ? 'text-[rgb(var(--primary))]'
-                        : 'text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--primary))]'
+                        ? isScrolled ? 'text-[rgb(var(--primary))]' : 'text-white'
+                        : isScrolled ? 'text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--primary))]' : 'text-white/65 hover:text-white'
                     }`}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="react-bits-nav-pill"
-                        className="absolute inset-0 rounded-full bg-[rgb(var(--primary))]/10"
+                        className={`absolute inset-0 rounded-full ${isScrolled ? 'bg-[rgb(var(--primary))]/10' : 'bg-white/10'}`}
                         transition={{ type: 'spring', stiffness: 380, damping: 34 }}
                       />
                     )}

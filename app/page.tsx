@@ -49,72 +49,55 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+      <section className="relative mx-2 mt-2 flex min-h-[720px] items-center overflow-hidden rounded-[28px] pt-24 sm:mx-0 sm:mt-0 sm:min-h-screen sm:rounded-none sm:pt-28">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/assets/images/naran-branch.jpeg"
             alt="Moon Restaurant branch"
             fill
-            className="object-cover scale-105"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/62" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,25,14,.82)_0%,rgba(3,25,14,.65)_48%,rgba(3,25,14,.92)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(3,25,14,.4)_75%)]" />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto w-full">
+        <div className="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-center px-5 pb-20 sm:px-6 sm:pb-24">
           <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: 'easeOut' }}
+            className="text-center"
           >
-            {/* Premium Gold Badge */}
-
-
-            {/* Main Heading — BIG on mobile */}
+            <div className="mb-5 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/75 sm:mb-7 sm:gap-3 sm:text-xs sm:tracking-[0.28em]">
+              <span className="h-px w-8 bg-[rgb(var(--secondary))]" />
+              Naran &amp; Besar
+              <span className="h-px w-8 bg-[rgb(var(--secondary))]" />
+            </div>
             <h1
               style={{ textShadow: '0 4px 30px rgba(0,0,0,0.6), 0 0 80px rgba(217,119,6,0.15)' }}
-              className="text-6xl xs:text-7xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-bold text-white mb-4 sm:mb-5 drop-shadow-2xl leading-[1.05] tracking-tight"
+              className="mb-5 font-serif text-5xl font-semibold leading-[.92] tracking-[-.04em] text-white min-[380px]:text-6xl sm:text-8xl lg:text-9xl"
             >
-              Moon
-              <span className="block text-[rgb(var(--secondary))] drop-shadow-[0_0_30px_rgba(217,119,6,0.5)]">Restaurant</span>
+              Moon <span className="block text-[rgb(var(--secondary))]">Restaurant</span>
             </h1>
-
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.7 }}
-              className="inline-flex items-center gap-2 mb-5 sm:mb-7 px-5 py-2 rounded-full border border-[rgb(var(--secondary))]/60 bg-[rgb(var(--secondary))]/15 backdrop-blur-sm"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
-              <span className="text-[rgb(var(--secondary))] text-xs sm:text-sm font-semibold uppercase tracking-[0.2em]">Naran &amp; Besar</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--secondary))] animate-pulse" />
-            </motion.div>
-            {/* Decorative Gold Divider */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
-              className="flex items-center justify-center gap-3 mb-5 sm:mb-7"
-            >
-              <div className="h-px w-12 bg-[rgb(var(--secondary))]/70 sm:w-20" />
-              <div className="w-2 h-2 rounded-full bg-[rgb(var(--secondary))]" />
-              <div className="h-px w-12 bg-[rgb(var(--secondary))]/70 sm:w-20" />
-            </motion.div>
-
-            {/* Subtitle — big & clear on mobile */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 mb-8 sm:mb-10 lg:mb-12 font-light tracking-wide px-2"
-              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}
-            >
-              Authentic Pakistani Cuisine
-            </motion.p>
-
-
+            <p className="mx-auto mb-7 max-w-xl text-sm leading-relaxed text-white/75 sm:mb-9 sm:text-xl">
+              Authentic Pakistani cuisine, generous hospitality, and memorable moments in the heart of the mountains.
+            </p>
+            <div className="flex flex-col justify-center gap-3 sm:flex-row">
+              <a href="tel:+923312241322" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[rgb(var(--secondary))] px-6 py-3.5 text-sm font-semibold text-white shadow-2xl shadow-black/20 transition hover:-translate-y-1 hover:bg-amber-500 sm:px-7 sm:py-4 sm:text-base">
+                <Icon name="phone" size={20} /> Call for Reservation
+              </a>
+              <Link href="#branches" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/20 sm:px-7 sm:py-4 sm:text-base">
+                Explore Our Branches <Icon name="down-arrow" size={20} />
+              </Link>
+            </div>
+            <div className="mx-auto mt-8 grid max-w-2xl grid-cols-3 divide-x divide-white/20 rounded-2xl border border-white/15 bg-black/15 px-2 py-3 text-white/65 backdrop-blur-md sm:mt-12 sm:px-6 sm:py-4">
+              <div><strong className="block text-lg text-white sm:text-xl">2</strong><span className="text-[10px] uppercase tracking-wider sm:text-xs">Branches</span></div>
+              <div><strong className="block text-lg text-white sm:text-xl">Daily</strong><span className="text-[10px] uppercase tracking-wider sm:text-xs">11AM - 11PM</span></div>
+              <div><strong className="block text-lg text-white sm:text-xl">100%</strong><span className="text-[10px] uppercase tracking-wider sm:text-xs">Halal</span></div>
+            </div>
           </motion.div>
         </div>
 
@@ -137,8 +120,8 @@ export default function Home() {
       </section>
 
       {/* Branches Section */}
-      <section className="bg-white/90 py-12 backdrop-blur-[1px] sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="branches" className="bg-white/90 py-12 backdrop-blur-[1px] sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-1.5 sm:px-3 lg:px-8">
           <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-[rgb(var(--primary))] mb-3 sm:mb-4">
               Our Branches
@@ -151,7 +134,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* Naran Branch */}
             <ScrollReveal direction="left" delay={0.2}>
-              <div className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <div className="group relative overflow-hidden rounded-[28px] bg-white shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl">
                 <div className="relative h-64 sm:h-80 overflow-hidden">
                   <Image
                     src="/assets/images/naran-branch.jpeg"
@@ -183,7 +166,7 @@ export default function Home() {
 
             {/* Besar Branch */}
             <ScrollReveal direction="right" delay={0.4}>
-              <div className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <div className="group relative overflow-hidden rounded-[28px] bg-white shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl">
                 <div className="relative h-64 sm:h-80 overflow-hidden">
                   <Image
                     src="/assets/images/naran.jpeg"
@@ -217,10 +200,10 @@ export default function Home() {
       </section>
 
       {/* Features Section - React Bits Scroll Stack */}
-      <section className="bg-white/85 py-8 backdrop-blur-[1px] sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <section className="bg-white/85 py-10 backdrop-blur-[1px] sm:py-12 lg:py-28">
+        <div className="mx-auto max-w-7xl px-1.5 sm:px-3 lg:px-8">
           <ScrollReveal>
-            <div className="mb-4 text-center sm:mb-12 lg:mb-14">
+            <div className="mb-5 text-center sm:mb-7 lg:mb-14">
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -250,7 +233,7 @@ export default function Home() {
             {features.map((feature, index) => (
               <ScrollStackItem
                 key={feature.title}
-                itemClassName="my-3 h-auto min-h-[calc(100svh-108px)] overflow-hidden rounded-[28px] border border-[rgb(var(--border))] bg-white p-0 shadow-2xl shadow-black/10 sm:my-8 sm:rounded-2xl md:min-h-[430px]"
+                itemClassName="h-auto min-h-[620px] overflow-hidden rounded-[24px] border border-[rgb(var(--border))] bg-white p-0 shadow-2xl shadow-black/10 sm:rounded-[28px] md:min-h-[430px] lg:rounded-2xl"
               >
                 <div className="grid h-full min-h-[calc(100svh-108px)] md:min-h-[430px] md:grid-cols-[0.95fr_1.05fr]">
                   <div className="relative min-h-[44svh] overflow-hidden md:min-h-full">
@@ -267,8 +250,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-12">
-                    <div className="mb-4 flex items-center gap-3 sm:mb-5">
+                  <div className="flex flex-col justify-center p-4 sm:p-6 lg:p-12">
+                    <div className="mb-5 flex items-center gap-3">
                       <span className="text-sm font-bold tracking-[0.2em] text-[rgb(var(--secondary))]">
                         {String(index + 1).padStart(2, '0')}
                       </span>
