@@ -53,13 +53,8 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-<<<<<<< HEAD
-            src="/assets/images/1.jpeg"
-            alt="Guests enjoying Moon Restaurant"
-=======
             src="/assets/images/naran-branch.jpeg"
             alt="Moon Restaurant branch"
->>>>>>> ca4aed54183f8dcccceba62b0263410741266734
             fill
             className="object-cover"
             priority
@@ -205,17 +200,10 @@ export default function Home() {
       </section>
 
       {/* Features Section - React Bits Scroll Stack */}
-<<<<<<< HEAD
       <section className="bg-white/85 py-10 backdrop-blur-[1px] sm:py-12 lg:py-28">
         <div className="mx-auto max-w-7xl px-1.5 sm:px-3 lg:px-8">
           <ScrollReveal>
             <div className="mb-5 text-center sm:mb-7 lg:mb-14">
-=======
-      <section className="bg-white/85 py-8 backdrop-blur-[1px] sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="mb-4 text-center sm:mb-12 lg:mb-14">
->>>>>>> ca4aed54183f8dcccceba62b0263410741266734
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -245,11 +233,7 @@ export default function Home() {
             {features.map((feature, index) => (
               <ScrollStackItem
                 key={feature.title}
-<<<<<<< HEAD
                 itemClassName="h-auto min-h-[620px] overflow-hidden rounded-[24px] border border-[rgb(var(--border))] bg-white p-0 shadow-2xl shadow-black/10 sm:rounded-[28px] md:min-h-[430px] lg:rounded-2xl"
-=======
-                itemClassName="my-3 h-auto min-h-[calc(100svh-108px)] overflow-hidden rounded-[28px] border border-[rgb(var(--border))] bg-white p-0 shadow-2xl shadow-black/10 sm:my-8 sm:rounded-2xl md:min-h-[430px]"
->>>>>>> ca4aed54183f8dcccceba62b0263410741266734
               >
                 <div className="grid h-full min-h-[calc(100svh-108px)] md:min-h-[430px] md:grid-cols-[0.95fr_1.05fr]">
                   <div className="relative min-h-[44svh] overflow-hidden md:min-h-full">
@@ -266,13 +250,8 @@ export default function Home() {
                     </div>
                   </div>
 
-<<<<<<< HEAD
                   <div className="flex flex-col justify-center p-4 sm:p-6 lg:p-12">
                     <div className="mb-5 flex items-center gap-3">
-=======
-                  <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-12">
-                    <div className="mb-4 flex items-center gap-3 sm:mb-5">
->>>>>>> ca4aed54183f8dcccceba62b0263410741266734
                       <span className="text-sm font-bold tracking-[0.2em] text-[rgb(var(--secondary))]">
                         {String(index + 1).padStart(2, '0')}
                       </span>
