@@ -53,8 +53,13 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
+<<<<<<< HEAD
             src="/assets/images/1.jpeg"
             alt="Guests enjoying Moon Restaurant"
+=======
+            src="/assets/images/naran-branch.jpeg"
+            alt="Moon Restaurant branch"
+>>>>>>> ca4aed54183f8dcccceba62b0263410741266734
             fill
             className="object-cover"
             priority
@@ -200,19 +205,26 @@ export default function Home() {
       </section>
 
       {/* Features Section - React Bits Scroll Stack */}
+<<<<<<< HEAD
       <section className="bg-white/85 py-10 backdrop-blur-[1px] sm:py-12 lg:py-28">
         <div className="mx-auto max-w-7xl px-1.5 sm:px-3 lg:px-8">
           <ScrollReveal>
             <div className="mb-5 text-center sm:mb-7 lg:mb-14">
+=======
+      <section className="bg-white/85 py-8 backdrop-blur-[1px] sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-4 text-center sm:mb-12 lg:mb-14">
+>>>>>>> ca4aed54183f8dcccceba62b0263410741266734
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-block px-4 py-2 bg-[rgb(var(--primary))]/10 text-[rgb(var(--primary))] rounded-full text-sm font-semibold mb-4"
+                className="mb-3 inline-block rounded-full bg-[rgb(var(--primary))]/10 px-4 py-2 text-sm font-semibold text-[rgb(var(--primary))] sm:mb-4"
               >
                 Our Excellence
               </motion.span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[rgb(var(--primary))]">
+              <h2 className="mx-auto max-w-sm text-3xl font-bold leading-tight text-[rgb(var(--primary))] sm:max-w-none sm:text-4xl lg:text-5xl">
                 Why Choose Moon Restaurant
               </h2>
             </div>
@@ -220,12 +232,12 @@ export default function Home() {
 
           <ScrollStack
             useWindowScroll
-            itemDistance={120}
-            itemStackDistance={24}
-            itemScale={0.025}
-            baseScale={0.88}
-            stackPosition="14%"
-            scaleEndPosition="7%"
+            itemDistance={72}
+            itemStackDistance={16}
+            itemScale={0.012}
+            baseScale={0.96}
+            stackPosition="9%"
+            scaleEndPosition="5%"
             rotationAmount={0}
             blurAmount={0.4}
             className="h-auto overflow-visible"
@@ -233,10 +245,14 @@ export default function Home() {
             {features.map((feature, index) => (
               <ScrollStackItem
                 key={feature.title}
+<<<<<<< HEAD
                 itemClassName="h-auto min-h-[620px] overflow-hidden rounded-[24px] border border-[rgb(var(--border))] bg-white p-0 shadow-2xl shadow-black/10 sm:rounded-[28px] md:min-h-[430px] lg:rounded-2xl"
+=======
+                itemClassName="my-3 h-auto min-h-[calc(100svh-108px)] overflow-hidden rounded-[28px] border border-[rgb(var(--border))] bg-white p-0 shadow-2xl shadow-black/10 sm:my-8 sm:rounded-2xl md:min-h-[430px]"
+>>>>>>> ca4aed54183f8dcccceba62b0263410741266734
               >
-                <div className="grid h-full min-h-[620px] md:min-h-[430px] md:grid-cols-[0.95fr_1.05fr]">
-                  <div className="relative min-h-[260px] overflow-hidden md:min-h-full">
+                <div className="grid h-full min-h-[calc(100svh-108px)] md:min-h-[430px] md:grid-cols-[0.95fr_1.05fr]">
+                  <div className="relative min-h-[44svh] overflow-hidden md:min-h-full">
                     <Image
                       src={feature.image}
                       alt={feature.title}
@@ -245,13 +261,18 @@ export default function Home() {
                       className="object-cover transition-transform duration-700 hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/18" />
-                    <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgb(var(--primary))] text-white shadow-xl sm:left-6 sm:top-6">
-                      <Icon name={feature.icon} size={30} />
+                    <div className="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgb(var(--primary))] text-white shadow-xl sm:left-6 sm:top-6">
+                      <Icon name={feature.icon} size={28} />
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   <div className="flex flex-col justify-center p-4 sm:p-6 lg:p-12">
                     <div className="mb-5 flex items-center gap-3">
+=======
+                  <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-12">
+                    <div className="mb-4 flex items-center gap-3 sm:mb-5">
+>>>>>>> ca4aed54183f8dcccceba62b0263410741266734
                       <span className="text-sm font-bold tracking-[0.2em] text-[rgb(var(--secondary))]">
                         {String(index + 1).padStart(2, '0')}
                       </span>
@@ -263,7 +284,7 @@ export default function Home() {
                     <p className="mt-3 text-lg font-semibold text-[rgb(var(--secondary))] sm:text-xl">
                       {feature.desc}
                     </p>
-                    <p className="mt-5 text-sm leading-7 text-[rgb(var(--muted-foreground))] sm:text-base lg:text-lg">
+                    <p className="mt-4 text-sm leading-6 text-[rgb(var(--muted-foreground))] sm:mt-5 sm:text-base sm:leading-7 lg:text-lg">
                       {feature.longDesc}
                     </p>
                   </div>
