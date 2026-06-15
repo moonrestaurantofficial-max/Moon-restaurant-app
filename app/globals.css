@@ -29,11 +29,28 @@
 }
 
 body {
-  background: rgb(var(--background));
+  background: #f8faf8;
   color: rgb(var(--foreground));
   font-family: var(--font-sans);
   font-feature-settings: "rlig" 1, "calt" 1;
   overflow-x: hidden;
+}
+
+section {
+  position: relative;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  color: white;
+  background: rgb(var(--primary));
 }
 
 .restaurant-backdrop {

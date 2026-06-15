@@ -62,7 +62,7 @@ export default function LocationsPage() {
             <div className={`grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
               {/* Image */}
               <ScrollReveal direction={index % 2 === 0 ? 'left' : 'right'}>
-                <div className="relative h-72 sm:h-80 lg:h-96 xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group">
+                <div className="group relative h-72 overflow-hidden rounded-[28px] shadow-2xl sm:h-80 sm:rounded-3xl lg:h-96 xl:h-[500px]">
                   <Image
                     src={location.image}
                     alt={location.name}
@@ -170,7 +170,7 @@ export default function LocationsPage() {
 
             {/* Map */}
             <ScrollReveal delay={0.4}>
-              <div className="mt-8 sm:mt-10 lg:mt-12 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-64 sm:h-80 lg:h-96">
+              <div className="mt-8 h-64 overflow-hidden rounded-[28px] shadow-2xl sm:mt-10 sm:h-80 sm:rounded-3xl lg:mt-12 lg:h-96">
                 <iframe
                   src={location.mapEmbed}
                   width="100%"
