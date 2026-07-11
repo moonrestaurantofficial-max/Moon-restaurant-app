@@ -1,0 +1,348 @@
+@import "tailwindcss";
+
+:root {
+  /* Refined Charcoal & Gold Palette */
+  --primary: 28 28 28;         /* Charcoal - Main Brand Color */
+  --secondary: 176 141 87;     /* Antique Gold - Accent Color */
+  --background: 250 250 248;   /* Warm Off-White */
+  --foreground: 28 28 28;      /* Charcoal Text */
+  --card: 255 255 255;
+  --card-foreground: 28 28 28;
+  --muted: 241 240 236;        /* Warm Light Gray Panel */
+  --muted-foreground: 107 106 99;
+  --border: 229 227 221;       /* Hairline Border */
+  --ring: 28 28 28;
+  --success: 21 128 61;
+  --warning: 180 83 9;
+  --error: 220 38 38;          /* Error Red */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Poppins', var(--font-poppins), system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', var(--font-cormorant), serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font-sans);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  overflow-x: hidden;
+}
+
+section {
+  position: relative;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  color: white;
+  background: rgb(var(--primary));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--primary));
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--secondary));
+}
+
+/* Enhanced Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.8s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.8s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Text Styles */
+.text-accent {
+  color: rgb(var(--primary));
+}
+
+.bg-accent {
+  background-color: rgb(var(--primary));
+}
+
+.bg-accent-secondary {
+  background-color: rgb(var(--secondary));
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid rgb(var(--primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Responsive Typography — base font stays at 16px everywhere */
+@media (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Utility Classes */
+.container-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Smooth Transitions */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all 0.3s ease;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  border: 3px solid rgba(var(--primary), 0.2);
+  border-top-color: rgb(var(--primary));
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: rotate 1s linear infinite;
+}
