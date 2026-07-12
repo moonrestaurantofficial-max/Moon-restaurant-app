@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Icon from '@/components/Icon';
 import ScrollReveal from '@/components/ScrollReveal';
+import { isSupabaseConfigured, supabase, type ReviewRow } from '@/lib/supabase';
 
 interface Review {
   _id: string;
@@ -12,15 +13,6 @@ interface Review {
   createdAt: string;
   branch: string;
   comment: string;
-}
-
-interface ApiReview {
-  id: string;
-  name: string;
-  rating: number;
-  branch: string;
-  comment: string;
-  createdAt: string;
 }
 
 type SubmitStatus = 'idle' | 'success' | 'error' | 'preview';
@@ -76,11 +68,11 @@ const fallbackReviews: Review[] = [
   },
 ];
 
-const mapApiReview = (review: ApiReview): Review => ({
+const mapReviewRow = (review: ReviewRow): Review => ({
   _id: review.id,
   name: review.name,
   rating: review.rating,
-  createdAt: review.createdAt,
+  createdAt: review.created_at,
   branch: review.branch,
   comment: review.comment,
 });
@@ -129,24 +121,22 @@ export default function ReviewsPage() {
       setIsLoadingReviews(true);
       setReviewsError('');
 
-      try {
-        const res = await fetch('/api/reviews');
+      if (!isSupabaseConfigured || !supabase) {
+        setIsConfigured(false);
+        setIsLoadingReviews(false);
+        return;
+      }
 
-        if (res.status === 503) {
-          setIsConfigured(false);
-          setIsLoadingReviews(false);
-          return;
-        }
+      const { data, error } = await supabase
+        .from('reviews')
+        .select('*')
+        .eq('is_published', true)
+        .order('created_at', { ascending: false });
 
-        const data = await res.json();
-
-        if (!res.ok) {
-          setReviewsError(data.error || 'Failed to load reviews');
-        } else {
-          setReviews((data.reviews as ApiReview[]).map(mapApiReview));
-        }
-      } catch {
-        setReviewsError('Failed to load reviews');
+      if (error) {
+        setReviewsError(error.message || 'Failed to load reviews');
+      } else {
+        setReviews((data as ReviewRow[]).map(mapReviewRow));
       }
 
       setIsLoadingReviews(false);
@@ -178,31 +168,37 @@ export default function ReviewsPage() {
       return;
     }
 
-    try {
-      const res = await fetch('/api/reviews', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-
-      if (!res.ok || !data.review) {
-        setSubmitStatus('error');
-        setErrorMessage(data.error || 'Failed to publish review. Please try again.');
-        setIsSubmitting(false);
-        window.setTimeout(() => setSubmitStatus('idle'), 6000);
-        return;
-      }
-
-      setReviews(currentReviews => [mapApiReview(data.review as ApiReview), ...currentReviews]);
-      setSubmitStatus('success');
-    } catch {
+    if (!supabase) {
       setSubmitStatus('error');
-      setErrorMessage('Failed to publish review. Please try again.');
+      setErrorMessage('Supabase is not configured.');
       setIsSubmitting(false);
       window.setTimeout(() => setSubmitStatus('idle'), 6000);
       return;
     }
+
+    const { data, error } = await supabase
+      .from('reviews')
+      .insert({
+        name: formData.name,
+        email: formData.phone || null,
+        branch: formData.branch,
+        rating: formData.rating,
+        comment: formData.comment,
+        is_published: true,
+      })
+      .select()
+      .single();
+
+    if (error || !data) {
+      setSubmitStatus('error');
+      setErrorMessage(error?.message || 'Failed to publish review. Please try again.');
+      setIsSubmitting(false);
+      window.setTimeout(() => setSubmitStatus('idle'), 6000);
+      return;
+    }
+
+    setReviews(currentReviews => [mapReviewRow(data as ReviewRow), ...currentReviews]);
+    setSubmitStatus('success');
 
     setFormData({ name: '', phone: '', branch: '', rating: 5, comment: '' });
     setIsSubmitting(false);
@@ -267,7 +263,7 @@ export default function ReviewsPage() {
               </div>
               {!isConfigured && (
                 <p className="mt-3 text-center text-xs text-white/60">
-                  Preview mode until MongoDB env vars are added.
+                  Preview mode until Supabase env vars are added.
                 </p>
               )}
             </div>
@@ -302,7 +298,7 @@ export default function ReviewsPage() {
 
           {reviewsError && (
             <div className="mb-8 rounded-2xl border border-yellow-500 bg-yellow-50 p-4 text-sm font-medium text-yellow-900">
-              {reviewsError} See <span className="font-bold">MONGODB_REVIEWS_SETUP.md</span>, then refresh this page.
+              {reviewsError} See <span className="font-bold">SUPABASE_REVIEWS_SETUP.md</span>, then refresh this page.
             </div>
           )}
 
@@ -434,7 +430,7 @@ export default function ReviewsPage() {
                   <StatusMessage tone="success" text="Thank you. Your review is published." />
                 )}
                 {submitStatus === 'preview' && (
-                  <StatusMessage tone="preview" text="MongoDB is not configured yet, so this review was added only to the local preview." />
+                  <StatusMessage tone="preview" text="Supabase is not configured yet, so this review was added only to the local preview." />
                 )}
                 {submitStatus === 'error' && (
                   <StatusMessage tone="error" text={errorMessage || 'Something went wrong. Please try again.'} />
